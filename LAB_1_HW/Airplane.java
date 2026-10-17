@@ -51,14 +51,21 @@ public class Airplane extends AirVehicle {
     }
 
 
-    public void openDoors() {
+    public void openDoors(boolean openDoorsMode){
         if (getStatus() == FlightStatus.ON_GROUND) {
-            doorsOpen = true;
-            System.out.println("Airplane doors are open");
+            doorsOpen = openDoorsMode;
+
+            if (doorsOpen) {
+                System.out.println("Airplane doors are open");
+            }
+            else{
+                System.out.println("Airplane doors is closed");
+            }
         }
         else {
             System.out.println("Doors can be opened only on the ground");
         }
+    
     }
 
 
@@ -76,8 +83,7 @@ public class Airplane extends AirVehicle {
         }
         else {
             System.out.println(
-                "Luggage compartment can be opened only on the ground"
-            );
+                "Luggage compartment can be opened only on the ground");
         }
     }
 }

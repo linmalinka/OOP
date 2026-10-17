@@ -1,4 +1,7 @@
 
+import java.util.ArrayList;
+
+
 public class Main {
     public static void main(String[] args) {
 
@@ -6,11 +9,15 @@ public class Main {
 
         // Настраиваем самолет
         airplane.setWeight(50000);
-        airplane.setMaxSpeed(900);
-        airplane.setMaxHeight(12000);
+        airplane.setMaxSpeed(988);
+        airplane.setMaxHeight(12500);
         airplane.setType("Passenger");
-        airplane.setFlightNumber("SU123");
+        airplane.setFlightNumber("MH370");
         airplane.setManufacturer("Boeing");
+
+        ArrayList<String> crew = new ArrayList<>();
+        airplane.getCrew().add("Pylot: Ivan");
+        airplane.getCrew().add("Co-pylot: Vanya");
 
         System.out.println("=== AIRPLANE ===");
         System.out.println("Type: " + airplane.getType());
@@ -19,15 +26,19 @@ public class Main {
         System.out.println("Weight: " + airplane.getWeight());
         System.out.println("Max speed: " + airplane.getMaxSpeed());
         System.out.println("Max height: " + airplane.getMaxHeight());
+        System.out.println("Crew: " + airplane.getCrew());
+
 
         System.out.println("\n=== FLIGHT ===");
 
         airplane.fly();
 
+        airplane.setCrew(crew);
+
         airplane.changeSpeed(500);
         airplane.changeHeight(8000);
         airplane.changeDirection(
-            AirVehicle.FlightDirections.EAST
+            AirVehicle.FlightDirections.WEST
         );
 
         airplane.setAutopilotMode(
@@ -35,12 +46,13 @@ public class Main {
         );
 
         airplane.contactTheDispatcher();
+        airplane.openDoors(true);
 
-        System.out.println("\n=== LANDING ===");
+        System.out.println("\n=== LAND ===");
 
         airplane.land();
 
-        airplane.openDoors();
-        airplane.openLuggageCompartment(false);
+        airplane.openDoors(true);
+        airplane.openLuggageCompartment(true);
     }
 }
